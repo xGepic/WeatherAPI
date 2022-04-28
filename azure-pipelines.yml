@@ -15,8 +15,9 @@ jobs:
   
   - job: LintandBuild
     steps:
-      - script: dotnet build
-        displayName: Build
+      - task: DotNetCoreCLI@2
+        inputs:
+          command: 'build'    
       - task: BuildQualityChecks@8
         inputs:
           checkWarnings: true
