@@ -13,9 +13,9 @@ jobs:
     - task: BuildQualityChecks@8
       inputs:
         checkWarnings: true
-        warningFailOption: 'fixed'
         warningThreshold: '0'
-        warningTaskFilters: '^((vs|ms)build|dotnet(corecli|\s+.+))$/i'
+        warningFilters: /##\[warning\].+SA.+:/i
+        inclusiveFiltering: true
   - job: Test
     steps:
       - script: dotnet test --no-build --verbosity normal
