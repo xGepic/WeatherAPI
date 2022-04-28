@@ -10,12 +10,13 @@ pool:
 jobs:
   - job: Lint
     steps:
-      - task: UseDotNet@2
-        displayName: Setup .NET
+      - script: 'dotnet tool update -g dotnet-format && dotnet format --check --verbosity diagnostic'
+        displayName: 'Analyzer scan'
+      - task: BuildQualityChecks@7
+        displayName: 'Check build quality'
         inputs:
-          version: 6.0.x
-      - script: dotnet restore
-        displayName: Restore dependencies
+          checkWarnings: true
+          warningThreshold: '0'
   
   - job: Test
     steps:
