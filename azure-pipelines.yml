@@ -8,27 +8,24 @@ pool:
   vmImage: ubuntu-latest
 
 jobs:
-  - job: Lint
-    steps:
-      - task: BuildQualityChecks@8
-        displayName: Check build quality
-        inputs:
-          checkWarnings: true
-          warningThreshold: '0'
-
   - job: Test
     steps:
       - task: DotNetCoreCLI@2
         inputs:
           command: 'test'
   
-  - job: Build
+  - job: Lint_and_Build
     steps:
       - task: DotNetCoreCLI@2
         displayName: build
         inputs:
           command: 'build'    
-
+      - task: BuildQualityChecks@8
+        displayName: Check build quality
+        inputs:
+          checkWarnings: true
+          warningThreshold: '0'
+  
   - job: Deploy
     steps:
       - task: Docker@2
