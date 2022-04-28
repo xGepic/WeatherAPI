@@ -16,8 +16,6 @@ jobs:
           checkWarnings: true
           warningFailOption: 'fixed'
           warningThreshold: '0'
-          warningTaskFilters: '/^((vscode|ms)build|ant(\s+.+)?|gradle(w)?(\s+.+)?|grunt|gulp|maven(\s+.+)?|xamarin(android|ios)|xcode(\s+.+)?|cmake|build\s+.+|dotnet(corecli|\s+.+))$/i'
-          createBuildIssues: false
   
   - job: Test
     steps:
@@ -27,7 +25,6 @@ jobs:
   - job: Build
     steps:
       - script: dotnet build
-        displayName: Build
   
   - job: Deploy
     steps:
