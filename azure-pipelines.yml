@@ -14,13 +14,10 @@ jobs:
         displayName: 'Check build quality'
         inputs:
           checkWarnings: true
+          warningFailOption: 'fixed'
           warningThreshold: '0'
-          - task: BuildQualityChecks@8
-            inputs:
-              checkWarnings: true
-              warningFailOption: 'fixed'
-              warningThreshold: '0'
-              createBuildIssues: false
+          warningTaskFilters: '/^((vscode|ms)build|ant(\s+.+)?|gradle(w)?(\s+.+)?|grunt|gulp|maven(\s+.+)?|xamarin(android|ios)|xcode(\s+.+)?|cmake|build\s+.+|dotnet(corecli|\s+.+))$/i'
+          createBuildIssues: false
   
   - job: Test
     steps:
