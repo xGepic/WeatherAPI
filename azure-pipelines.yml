@@ -13,9 +13,8 @@ jobs:
       - task: BuildQualityChecks@8
         displayName: 'Check build quality'
         inputs:
-          checkWarnings: true
+          checkWarnings: false
           warningThreshold: '0'
-          evaluateTaskWarnings: false
   
   - job: Test
     steps:
