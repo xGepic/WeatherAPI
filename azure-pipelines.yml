@@ -2,7 +2,7 @@ name: .NET
 
 trigger:
   branches:
-    include: [main]
+    include: [master]
 
 pool:
   vmImage: ubuntu-latest
