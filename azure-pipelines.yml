@@ -12,13 +12,6 @@ jobs:
     steps:
       - task: BuildQualityChecks@8
         displayName: 'Check build quality'
-        inputs:
-          checkWarnings: true
-          warningFailOption: build
-          warningThreshold: '0'
-          checkCoverage: true
-          coverageFailOption: build
-          coverageType: lines
   
   - job: Test
     steps:
