@@ -10,8 +10,11 @@ pool:
 jobs:
   - job: Lint
     steps:
-      - task: BuildQualityChecks@8
-        displayName: 'Check build quality'
+    - task: BuildQualityChecks@8
+      inputs:
+        checkWarnings: true
+        warningFailOption: 'fixed'
+        warningThreshold: '0'
   
   - job: Test
     steps:
