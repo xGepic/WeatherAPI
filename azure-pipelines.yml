@@ -16,7 +16,7 @@ jobs:
           checkWarnings: true
           warningThreshold: '0'
           inclusiveFiltering: true
-          warningFilters: /##\[warning\].+CA.+:/i
+          warningFilters: /[warning\].+CA.+:/i
   
   - job: Test
     steps:
