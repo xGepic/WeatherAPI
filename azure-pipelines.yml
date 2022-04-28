@@ -15,7 +15,7 @@ jobs:
         checkWarnings: true
         warningFailOption: 'fixed'
         warningThreshold: '0'
-  
+        warningTaskFilters: '^((vs|ms)build|dotnet(corecli|\s+.+))$/i'
   - job: Test
     steps:
       - script: dotnet test --no-build --verbosity normal
