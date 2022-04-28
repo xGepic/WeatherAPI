@@ -8,23 +8,27 @@ pool:
   vmImage: ubuntu-latest
 
 jobs:
-  - job: Test
+  - job: Lint
     steps:
-      - script: dotnet test --no-build --verbosity normal
-        displayName: Test
-  
-  - job: LintandBuild
-    steps:
-      - task: DotNetCoreCLI@2
-        displayName: build
-        inputs:
-          command: 'build'    
       - task: BuildQualityChecks@8
         displayName: Check build quality
         inputs:
           checkWarnings: true
           warningThreshold: '0'
+
+  - job: Test
+    steps:
+      - task: DotNetCoreCLI@2
+        inputs:
+          command: 'test'
   
+  - job: Build
+    steps:
+      - task: DotNetCoreCLI@2
+        displayName: build
+        inputs:
+          command: 'build'    
+
   - job: Deploy
     steps:
       - task: Docker@2
