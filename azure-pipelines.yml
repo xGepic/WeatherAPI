@@ -14,9 +14,10 @@ jobs:
         displayName: 'Check build quality'
         inputs:
           checkWarnings: true
+          warningFailOption: 'fixed'
+          warningFilters: ''
+          warningTaskFilters: '/^((vs|ms)build|ant(\\s+.+)?|gradle(w)?(\s+.+)?|grunt|gulp|maven(\s+.+)?|xamarin(android|ios)|xcode(\s+.+)?|cmake|build\s+.+)$/i'
           warningThreshold: '0'
-          inclusiveFiltering: true
-          warningFilters: /##\[warning\].+SA.+:/i
   
   - job: Test
     steps:
