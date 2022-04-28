@@ -10,8 +10,6 @@ pool:
 jobs:
   - job: Lint
     steps:
-      - script: 'dotnet tool update -g dotnet-format && dotnet format --check --verbosity diagnostic'
-        displayName: 'Analyzer scan'
       - task: BuildQualityChecks@8
         displayName: 'Check build quality'
         inputs:
