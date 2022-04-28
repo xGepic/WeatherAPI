@@ -13,7 +13,7 @@ jobs:
       - script: dotnet test --no-build --verbosity normal
         displayName: Test
   
-  - job: Lint and Build
+  - job: LintandBuild
     steps:
       - script: dotnet build
         displayName: Build
@@ -21,8 +21,6 @@ jobs:
         inputs:
           checkWarnings: true
           warningThreshold: '0'
-          warningFilters: /##\[warning\].+SA.+:/i
-          inclusiveFiltering: true
   
   - job: Deploy
     steps:
