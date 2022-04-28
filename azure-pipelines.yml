@@ -22,6 +22,6 @@ jobs:
         displayName: Test
   - job: Build
     steps:
-      - script: dotnet build --no-restore
+      - script: dotnet build
         displayName: Build
   - job: Deploy
