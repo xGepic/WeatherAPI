@@ -8,14 +8,6 @@ pool:
   vmImage: ubuntu-latest
 
 jobs:
-  - job: Lint
-    steps:
-    - task: BuildQualityChecks@8
-      inputs:
-        checkWarnings: true
-        warningThreshold: '0'
-        warningFilters: /##\[warning\].+SA.+:/i
-        inclusiveFiltering: true
   - job: Test
     steps:
       - script: dotnet test --no-build --verbosity normal
@@ -25,6 +17,15 @@ jobs:
     steps:
       - script: dotnet build
         displayName: Build
+    
+  - job: Lint
+    steps:
+    - task: BuildQualityChecks@8
+      inputs:
+        checkWarnings: true
+        warningThreshold: '0'
+        warningFilters: /##\[warning\].+SA.+:/i
+        inclusiveFiltering: true
   
   - job: Deploy
     steps:
