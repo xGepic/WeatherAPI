@@ -14,8 +14,11 @@ jobs:
         displayName: 'Check build quality'
         inputs:
           checkWarnings: true
-          warningFailOption: 'fixed'
+          warningFailOption: build
           warningThreshold: '0'
+          checkCoverage: true
+          coverageFailOption: build
+          coverageType: lines
   
   - job: Test
     steps:
@@ -25,6 +28,7 @@ jobs:
   - job: Build
     steps:
       - script: dotnet build
+        displayName: Build
   
   - job: Deploy
     steps:
