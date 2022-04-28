@@ -15,6 +15,7 @@ jobs:
         inputs:
           checkWarnings: true
           warningThreshold: '0'
+          showStatistics: false
   
   - job: Test
     steps:
