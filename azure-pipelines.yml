@@ -23,14 +23,16 @@ stages:
               cliProjectKey: 'DemoWeatherAPI'
               cliProjectName: 'WeatherAPI'
               cliSources: '.'
+          - task: DotNetCoreCLI@2
+            displayName: build
+            inputs:
+              command: 'build' 
           - task: SonarCloudAnalyze@1
             displayName: SonarCloudAnalyze
           - task: SonarCloudPublish@1
             displayName: SonarCloudPublish
             inputs:
               pollingTimeoutSec: '300'
-
-
 #Testing
   - stage: Test
     jobs:
