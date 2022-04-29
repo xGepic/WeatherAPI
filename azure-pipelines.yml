@@ -18,9 +18,9 @@ stages:
             inputs:
               SonarCloud: 'SonarCloud'
               organization: 'xgepic'
-              scannerMode: 'CLI'
+              scannerMode: 'MSBuild'
               configMode: 'manual'
-              cliProjectKey: 'DemoWeatherAPI'
+              projectKey: 'DemoWeatherAPI'
               cliProjectName: 'WeatherAPI'
               cliSources: '.'
           - task: DotNetCoreCLI@2
