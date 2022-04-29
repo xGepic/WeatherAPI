@@ -15,17 +15,4 @@ public class ControllerTests
         //Assert
         Assert.That(result, Is.Not.Null);
     }
-    [Test]
-    public void GetAllTestNotEmpty()
-    {
-        //Arrange
-        var loggerStub = new Mock<ILogger<WeatherForecastController>>();
-        var controller = new WeatherForecastController(loggerStub.Object);
-
-        //Act
-        var result = controller.Get();
-
-        //Assert
-        Assert.IsNotEmpty(result);
-    }
 }
