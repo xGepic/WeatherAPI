@@ -10,7 +10,9 @@ pool:
 stages:
 #Linting
   - stage: Lint
-      
+    jobs:
+        - job: Lint
+
 #Testing
   - stage: Test
     jobs:
