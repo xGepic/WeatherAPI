@@ -43,6 +43,10 @@ stages:
               command: "test"
               projects: "**/WeatherForecastTests/*.csproj"
               arguments: '--collect "Code coverage"'
+          - task: PublishTestResults@2
+            inputs:
+              testRunner: VSTest
+              testResultsFiles: '**/*.trx'
   #Building
   - stage: Build
     jobs:
