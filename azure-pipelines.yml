@@ -8,14 +8,15 @@ pool:
   vmImage: ubuntu-latest
 
 stages:
-  - stage: Test-Stage
+  - stage: Test_Stage
     jobs:
       - job: Test
         steps:
           - task: DotNetCoreCLI@2
             inputs:
               command: 'test'
-  - stage: Lint_and_Build-Stage
+
+  - stage: Build_and_Lint_Stage
     jobs:
       - job: Build
         steps:
