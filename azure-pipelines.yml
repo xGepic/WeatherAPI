@@ -42,7 +42,8 @@ stages:
             inputs:
               command: "test"
               projects: "**/WeatherForecastTests/*.csproj"
-              codeCoverageEnabled: true
+              publishTestResults: true
+              arguments: --collect "Code coverage"
   #Building
   - stage: Build
     jobs:
