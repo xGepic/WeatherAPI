@@ -42,8 +42,11 @@ stages:
             inputs:
               command: "test"
               projects: "**/WeatherForecastTests/*.csproj"
-              publishTestResults: true
-              arguments: --collect "Code coverage"
+          - task: PublishCodeCoverageResults@1
+            inputs:
+              codeCoverageTool: 'Cobertura'
+              summaryFileLocation: coveragereport/Cobertura.xml
+              reportDirectory: coveragereport
   #Building
   - stage: Build
     jobs:
