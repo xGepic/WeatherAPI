@@ -7,9 +7,6 @@ trigger:
 pool:
   vmImage: ubuntu-latest
 
-variables:
-  buildConfiguration: 'Release'
-  
 stages:
   #Linting
   - stage: Lint
@@ -42,10 +39,11 @@ stages:
       - job: Test
         steps:
           - task: DotNetCoreCLI@2
+            displayName: Testing
             inputs:
               command: "test"
               projects: "**/WeatherForecastTests/*.csproj"
-              arguments: '--configuration $(buildConfiguration) --collect "Code coverage"'
+              arguments: '--collect "Code coverage"'
   #Building
   - stage: Build
     jobs:

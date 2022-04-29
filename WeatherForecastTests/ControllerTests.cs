@@ -3,7 +3,7 @@ namespace WeatherForecastTests;
 public class ControllerTests
 {
     [Test]
-    public void GetAllTest()
+    public void GetAllTestNotNull()
     {
         //Arrange
         var loggerStub = new Mock<ILogger<WeatherForecastController>>();
@@ -14,5 +14,18 @@ public class ControllerTests
 
         //Assert
         Assert.That(result, Is.Not.Null);
+    }
+    [Test]
+    public void GetAllTestNotEmpty()
+    {
+        //Arrange
+        var loggerStub = new Mock<ILogger<WeatherForecastController>>();
+        var controller = new WeatherForecastController(loggerStub.Object);
+
+        //Act
+        var result = controller.Get();
+
+        //Assert
+        Assert.IsNotEmpty(result);
     }
 }
