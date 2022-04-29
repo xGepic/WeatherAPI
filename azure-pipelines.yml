@@ -14,6 +14,7 @@ stages:
         - job: Lint
           steps:
           - task: SonarCloudPrepare@1
+            displayName: SonarCloudPrepare
             inputs:
               SonarCloud: 'SonarCloud'
               organization: 'xgepic'
@@ -22,6 +23,13 @@ stages:
               cliProjectKey: 'DemoWeatherAPI'
               cliProjectName: 'WeatherAPI'
               cliSources: '.'
+          - task: SonarCloudAnalyze@1
+            displayName: SonarCloudAnalyze
+          - task: SonarCloudPublish@1
+            displayName: SonarCloudPublish
+            inputs:
+              pollingTimeoutSec: '300'
+
 
 #Testing
   - stage: Test
