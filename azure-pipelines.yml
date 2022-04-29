@@ -8,9 +8,9 @@ pool:
   vmImage: ubuntu-latest
 
 stages:
-  - stage: Build_and_Lint_Stage
+  - stage: Lint
     jobs:
-      - job: Build
+      - job: Lint
         steps:
           - task: DotNetCoreCLI@2
             displayName: build
@@ -22,13 +22,22 @@ stages:
               checkWarnings: true
               warningThreshold: '0'
 
-  - stage: Test_Stage
+  - stage: Test
     jobs:
       - job: Test
         steps:
           - task: DotNetCoreCLI@2
             inputs:
               command: 'test'
+
+  - stage: Build
+    jobs: 
+      - job: Build
+        steps: 
+          - task: DotNetCoreCLI@2
+            displayName: build
+            inputs:
+              command: 'build' 
 
   - stage: DeployStage 
     jobs:
