@@ -13,6 +13,7 @@ stages:
     jobs:
         - job: Lint
           steps:
+          - task: UseNetCoreSonarCloud@1
           - task: SonarCloudPrepare@1
             displayName: SonarCloudPrepare
             inputs:
