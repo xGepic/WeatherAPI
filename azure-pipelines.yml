@@ -7,32 +7,39 @@ trigger:
 pool:
   vmImage: ubuntu-latest
 
-jobs:
-  - job: Test
-    steps:
-      - task: DotNetCoreCLI@2
-        inputs:
-          command: 'test'
-  
-  - job: Lint_and_Build
-    steps:
-      - task: DotNetCoreCLI@2
-        displayName: build
-        inputs:
-          command: 'build'    
-      - task: BuildQualityChecks@8
-        displayName: Check build quality
-        inputs:
-          checkWarnings: true
-          warningThreshold: '0'
-  
-  - job: Deploy
-    steps:
-      - task: Docker@2
-        displayName: deploy
-        inputs:
-          containerRegistry: 'DockerHubConnection'
-          repository: 'xgepic/weather-api'
-          command: 'buildAndPush'
-          Dockerfile: '**/Dockerfile'
-          tags: latest
+stages:
+  - stage: Test-Stage
+    jobs:
+      - job: Test
+        steps:
+          - task: DotNetCoreCLI@2
+            inputs:
+              command: 'test'
+  - stage: Lint_and_Build-Stage
+    jobs:
+      - job: Build
+        steps:
+          - task: DotNetCoreCLI@2
+            displayName: build
+            inputs:
+              command: 'build' 
+      - job: Lint
+        steps:
+          - task: BuildQualityChecks@8
+            displayName: Check build quality
+            inputs:
+              checkWarnings: true
+              warningThreshold: '0'
+
+  - stage: DeployStage 
+    jobs:
+      - job: Deploy
+        steps:
+        - task: Docker@2
+          displayName: deploy
+          inputs:
+            containerRegistry: 'DockerHubConnection'
+            repository: 'xgepic/weather-api'
+            command: 'buildAndPush'
+            Dockerfile: '**/Dockerfile'
+            tags: latest
