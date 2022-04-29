@@ -56,11 +56,6 @@ stages:
             displayName: build
             inputs:
               command: 'build' 
-          - task: BuildQualityChecks@8
-            displayName: Check build quality
-            inputs:
-              checkWarnings: true
-              warningThreshold: '0'
 #Deploying
   - stage: Deploy
     jobs:
