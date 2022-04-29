@@ -12,6 +12,16 @@ stages:
   - stage: Lint
     jobs:
         - job: Lint
+          steps:
+          - task: SonarCloudPrepare@1
+            inputs:
+              SonarCloud: 'SonarCloud'
+              organization: 'xgepic'
+              scannerMode: 'CLI'
+              configMode: 'manual'
+              cliProjectKey: 'DemoWeatherAPI'
+              cliProjectName: 'WeatherAPI'
+              cliSources: '.'
 
 #Testing
   - stage: Test
@@ -42,7 +52,7 @@ stages:
               checkWarnings: true
               warningThreshold: '0'
 #Deploying
-  - stage: DeployStage 
+  - stage: Deploy
     jobs:
       - job: Deploy
         steps:
