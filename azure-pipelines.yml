@@ -42,7 +42,7 @@ stages:
             inputs:
               command: "test"
               projects: "**/WeatherForecastTests/*.csproj"
-              arguments: '--collect "Code coverage"'
+          - script: dotnet test WeatherForecastTests.csproj --logger trx --collect "Code coverage"
           - task: PublishTestResults@2
             inputs:
               testRunner: VSTest
