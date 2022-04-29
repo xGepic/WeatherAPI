@@ -24,8 +24,6 @@ stages:
             displayName: build
             inputs:
               command: 'build' 
-      - job: Lint
-        steps:
           - task: BuildQualityChecks@8
             displayName: Check build quality
             inputs:
