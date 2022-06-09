@@ -16,6 +16,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\API\WeatherAPI.csproj" />
+    <AssemblyAttribute Include="System.Diagnostics.CodeAnalysis.ExcludeFromCodeCoverageAttribute" />
   </ItemGroup>
 
 </Project>
