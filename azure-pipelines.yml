@@ -46,7 +46,7 @@ stages:
             inputs:
               command: "test"
               projects: "**/WeatherForecastTests/*.csproj"
-              arguments: '--configuration $(buildConfiguration) --collect "Code coverage" ExcludeByFile="**/program.cs"'
+              arguments: '--configuration $(buildConfiguration) --collect "Code coverage" /p:ExcludeByFile="**/API/program.cs"'
   #Building
   - stage: Build
     jobs:
