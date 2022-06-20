@@ -26,6 +26,6 @@ public class ControllerTests
         var result = controller.Get();
 
         //Assert
-        Assert.That(result.count, 7);
+        Assert.That(result.Count, 7);
     }
 }
