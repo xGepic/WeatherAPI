@@ -13,6 +13,6 @@ public class ControllerTests
         var result = controller.Get();
 
         //Assert
-        Assert.That(result, Is.Null);
+        Assert.That(result, Is.Not.Null);
     }
 }
